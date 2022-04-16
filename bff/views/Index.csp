@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <%c++ 
+    auto assets_css = @@.get<std::vector<std::string>>("css");
+    auto assets_js = @@.get<std::vector<std::string>>("js"); 
+  %>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bem-Vindo</title>
+    <!--Google Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <%c++ for(auto css_url: assets_css){%>
+    <link rel="stylesheet" href="{% css_url %}" /> 
+    <%c++}%>
+    <script> 
+       window.baseUrl = "[[ baseUrl ]]"
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <%c++ for(auto js_url: assets_js){%>
+    <script src="{%js_url%}"></script>
+    <%c++}%>
+  </body>
+</html>
